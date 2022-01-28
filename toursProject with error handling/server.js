@@ -6,7 +6,7 @@ const app = require('./app');
 process.on('uncaughtException', err => {
   console.log('UNCAUGHT EXCEPTION! Shutting down...');
   console.log(err.name, err.message);
-  ServiceWorkerRegistration.close(() => {
+  server.close(() => {
     process.exit(1);
   });
 });
@@ -33,7 +33,7 @@ app.listen(port, () => {
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION! Shutting down...');
   console.log(err.name, err.message);
-  ServiceWorkerRegistration.close(() => {
+  server.close(() => {
     process.exit(1);
   });
 });
